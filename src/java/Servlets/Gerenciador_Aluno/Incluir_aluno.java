@@ -1,0 +1,105 @@
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
+package Servlets.Gerenciador_Aluno;
+
+import Dao.AlunoDao;
+import dominio.Aluno;
+import java.io.IOException;
+import java.io.PrintWriter;
+import javax.servlet.ServletException;
+import javax.servlet.http.HttpServlet;
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpServletResponse;
+
+/**
+ *
+ * @author jpedro
+ */
+public class Incluir_aluno extends HttpServlet {
+
+    /**
+     * Processes requests for both HTTP <code>GET</code> and <code>POST</code>
+     * methods.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    protected void processRequest(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        response.setContentType("text/html;charset=UTF-8");
+        try (PrintWriter out = response.getWriter()) {
+            
+            AlunoDao alunoDao = new AlunoDao();
+            Aluno aluno = new Aluno();
+            
+            
+            String nomeAluno = "Fulano barreiras";
+            String cpfAluno = "4444444";
+            String rgAluno = "23232323";
+            String emailAluno = "fulano@gmail.com";
+            int matricula = 10258;
+            
+                        
+            aluno.setNome(nomeAluno);
+            aluno.setCpf(cpfAluno);
+            aluno.setRg(rgAluno);
+            aluno.setEmail(emailAluno);
+            aluno.setMatricula(matricula);
+            
+            try {
+                alunoDao.adiciona(aluno);
+                out.println("<h2>Aluno cadastrado com sucesso!</h2>");
+
+            } catch (Exception e) {
+                out.println("<h2>Erro ao cadastrar aluno!</h2>");
+            }    
+            
+            
+        }
+    }
+
+    // <editor-fold defaultstate="collapsed" desc="HttpServlet methods. Click on the + sign on the left to edit the code.">
+    /**
+     * Handles the HTTP <code>GET</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doGet(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Handles the HTTP <code>POST</code> method.
+     *
+     * @param request servlet request
+     * @param response servlet response
+     * @throws ServletException if a servlet-specific error occurs
+     * @throws IOException if an I/O error occurs
+     */
+    @Override
+    protected void doPost(HttpServletRequest request, HttpServletResponse response)
+            throws ServletException, IOException {
+        processRequest(request, response);
+    }
+
+    /**
+     * Returns a short description of the servlet.
+     *
+     * @return a String containing servlet description
+     */
+    @Override
+    public String getServletInfo() {
+        return "Short description";
+    }// </editor-fold>
+
+}

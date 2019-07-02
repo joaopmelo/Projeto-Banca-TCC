@@ -1,0 +1,4 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<Context antiJARLocking="true" path="/ProjetoBanca">
+  <Resource auth="Container" driverClassName="org.postgresql.Driver" maxActive="30" maxIdle="3" maxWait="1000" name="jdbc/projetoBanca" password="12345678" type="javax.sql.DataSource" url="jdbc:postgresql://localhost:5432/projetoBancaTcc" username="postgres"/>
+</Context>
